@@ -16,13 +16,12 @@ const ArticleScreen = ({ route }) => {
   const { articleId } = route.params;
   const { language, switchLanguage } = useContext(LanguageContext);
   const [article, setArticle] = useState(null);
-
+  
   useEffect(() => {
     const loadArticle = async () => {
       const fetchedArticle = await fetchArticleById(articleId, language);
       setArticle(fetchedArticle);
     };
-
     loadArticle();
   }, [articleId, language]);
 
@@ -33,7 +32,7 @@ const ArticleScreen = ({ route }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.buttonContainer}>
-        <Button
+      <Button
           title={`Switch to ${language === "en" ? "French" : "English"}`}
           onPress={() => switchLanguage(language === "en" ? "fr" : "en")}
           color="#6200ee"
@@ -43,16 +42,16 @@ const ArticleScreen = ({ route }) => {
         source={{
           uri:
             `http://localhost:1337` +
-            article.attributes.cover.data[0].attributes.url,
+            article.cover.url,
         }}
         style={styles.image}
       />
-      <Text style={styles.title}>{article.attributes.title}</Text>
-      <Text style={styles.author}>{article.attributes.author}</Text>
+      <Text style={styles.title}>{article.title}</Text>
+      <Text style={styles.author}>{article.author}</Text>
       <Text style={styles.date}>
-        {new Date(article.attributes.createdAt).toLocaleDateString()}
+        {new Date(article.createdAt).toLocaleDateString()}
       </Text>
-      <Markdown>{article.attributes.content}</Markdown>
+      <Markdown>{article.content}</Markdown>
     </ScrollView>
   );
 };

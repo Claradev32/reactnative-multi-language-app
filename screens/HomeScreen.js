@@ -43,23 +43,23 @@ const HomeScreen = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Article", { articleId: item.id })
+              navigation.navigate("Article", { articleId: item.documentId })
             }
           >
             <View style={styles.articleContainer}>
               <Image
                 source={{
-                  uri:
+                  uri:Claradev32
                     `http://localhost:1337` +
-                    item.attributes.cover.data[0].attributes.url,
+                    item.cover.url,
                 }}
                 style={styles.image}
               />
               <View style={styles.textContainer}>
-                <Text style={styles.title}>{item.attributes.title}</Text>
-                <Text style={styles.author}>{item.attributes.author}</Text>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.author}>{item.author}</Text>
                 <Text style={styles.date}>
-                  {new Date(item.attributes.createdAt).toLocaleDateString()}
+                  {new Date(item.createdAt).toLocaleDateString()}
                 </Text>
               </View>
             </View>
