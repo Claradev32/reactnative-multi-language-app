@@ -49,9 +49,9 @@ const HomeScreen = () => {
             <View style={styles.articleContainer}>
               <Image
                 source={{
-                  uri:Claradev32
+                  uri:
                     `http://localhost:1337` +
-                    item.cover.url,
+                    item.cover[0].url,
                 }}
                 style={styles.image}
               />

@@ -42,7 +42,7 @@ const ArticleScreen = ({ route }) => {
         source={{
           uri:
             `http://localhost:1337` +
-            article.cover.url,
+            article.cover[0].url,
         }}
         style={styles.image}
       />
